@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-slate-50 text-slate-800 antialiased; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-firouzeh; }
+  ::selection { @apply bg-firouzeh/30; }
+  /* جلوگیری از زوم خودکار iOS روی اینپوت‌ها */
+  input, select, textarea { font-size: 16px; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5
+           text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary { @apply btn bg-lajevard text-white hover:bg-lajevard-dark; }
+  .btn-accent  { @apply btn bg-zaferan text-slate-900 hover:brightness-95; }
+  .btn-outline { @apply btn border border-slate-300 bg-white hover:bg-slate-100; }
+  .input {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5
+           focus:border-firouzeh focus:outline-none focus:ring-2 focus:ring-firouzeh/30;
+  }
+  .card { @apply rounded-2xl border border-slate-200 bg-white shadow-sm; }
+}
