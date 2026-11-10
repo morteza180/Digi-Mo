@@ -1,0 +1,72 @@
+[
+  {
+    "id": "c-mobile",
+    "slug": "mobile",
+    "name": "گوشی موبایل",
+    "icon": "📱",
+    "order": 1,
+    "description": "جدیدترین گوشی‌های سامسونگ، اپل و شیائومی",
+    "specSchema": [
+      { "key": "ram", "label": "رم", "unit": "گیگابایت", "better": "higher" },
+      { "key": "storage", "label": "حافظه داخلی", "unit": "گیگابایت", "better": "higher" },
+      { "key": "battery", "label": "ظرفیت باتری", "unit": "میلی‌آمپر", "better": "higher" },
+      { "key": "displayInch", "label": "اندازه صفحه‌نمایش", "unit": "اینچ", "better": "higher" },
+      { "key": "cameraMP", "label": "دوربین اصلی", "unit": "مگاپیکسل", "better": "higher" },
+      { "key": "weightGram", "label": "وزن", "unit": "گرم", "better": "lower" }
+    ]
+  },
+  {
+    "id": "c-charger",
+    "slug": "charger",
+    "name": "شارژر و آداپتور",
+    "icon": "🔌",
+    "order": 2,
+    "description": "شارژر دیواری سریع و GaN",
+    "specSchema": [
+      { "key": "powerW", "label": "توان خروجی", "unit": "وات", "better": "higher" },
+      { "key": "ports", "label": "تعداد پورت", "unit": "", "better": "higher" },
+      { "key": "gan", "label": "فناوری GaN", "unit": "", "better": "higher", "type": "bool" }
+    ]
+  },
+  {
+    "id": "c-powerbank",
+    "slug": "powerbank",
+    "name": "پاوربانک",
+    "icon": "🔋",
+    "order": 3,
+    "description": "پاوربانک‌های ظرفیت بالا و شارژ سریع",
+    "specSchema": [
+      { "key": "capacityMah", "label": "ظرفیت", "unit": "میلی‌آمپر", "better": "higher" },
+      { "key": "outputW", "label": "حداکثر توان خروجی", "unit": "وات", "better": "higher" },
+      { "key": "ports", "label": "تعداد پورت", "unit": "", "better": "higher" },
+      { "key": "weightGram", "label": "وزن", "unit": "گرم", "better": "lower" }
+    ]
+  },
+  {
+    "id": "c-headphone",
+    "slug": "headphone",
+    "name": "هدفون و ایرباد",
+    "icon": "🎧",
+    "order": 4,
+    "description": "ایربادهای بی‌سیم با و بدون نویز کنسلینگ",
+    "specSchema": [
+      { "key": "batteryHours", "label": "شارژدهی هدفون", "unit": "ساعت", "better": "higher" },
+      { "key": "totalHours", "label": "شارژدهی با کیس", "unit": "ساعت", "better": "higher" },
+      { "key": "anc", "label": "نویز کنسلینگ", "unit": "", "better": "higher", "type": "bool" },
+      { "key": "bluetooth", "label": "نسخه بلوتوث", "unit": "", "better": "higher" }
+    ]
+  },
+  {
+    "id": "c-case",
+    "slug": "case",
+    "name": "قاب و کاور",
+    "icon": "🛡️",
+    "order": 5,
+    "description": "کاور سیلیکونی، شفاف و ضدضربه",
+    "specSchema": [
+      { "key": "thicknessMM", "label": "ضخامت", "unit": "میلی‌متر", "better": "lower" },
+      { "key": "weightGram", "label": "وزن", "unit": "گرم", "better": "lower" },
+      { "key": "wirelessCharge", "label": "سازگار با شارژ وایرلس", "unit": "", "better": "higher", "type": "bool" }
+    ]
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "shop": {
+    "name": "دیجی مو",
+    "slogan": "موبایل و لوازم جانبی اصل",
+    "phone": "021-12345678",
+    "email": "info@digimo.example",
+    "address": "تهران، خیابان ولیعصر، پلاک ۱۲۳",
+    "workingHours": "شنبه تا چهارشنبه ۹ تا ۱۸",
+    "instagram": "digimo.example"
+  },
+  "shipping": {
+    "freeShippingThreshold": 3000000,
+    "cutoffHour": 14,
+    "processingHours": 4,
+    "offDays": [5],
+    "methods": [
+      {
+        "id": "express",
+        "title": "پیک فوری (فقط تهران)",
+        "cost": 85000,
+        "etaDays": [0, 1],
+        "cities": ["تهران"]
+      },
+      {
+        "id": "post",
+        "title": "پست پیشتاز",
+        "cost": 60000,
+        "etaDays": [2, 4],
+        "cities": []
+      }
+    ],
+    "timeSlots": [
+      { "id": "morning", "label": "۹ تا ۱۲" },
+      { "id": "noon", "label": "۱۲ تا ۱۵" },
+      { "id": "evening", "label": "۱۵ تا ۱۹" }
+    ]
+  },
+  "cities": ["تهران", "کرج", "اصفهان", "شیراز", "مشهد", "تبریز", "اهواز", "قم", "رشت", "کرمان"],
+  "currency": "تومان"
+}
