@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ProductCard from '@/components/ProductCard';
 import { getProducts, getCategories } from '@/services/products.server';
 
@@ -128,7 +129,14 @@ export default async function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="hidden text-center text-[9rem] leading-none md:block" aria-hidden="true">📱</div>
+          <div className="relative hidden text-center text-[9rem] leading-none md:block" aria-hidden="true">
+            <Image
+    src="/images/Futuristic_Smartphone_Tech_Showcase.png"
+    alt=""
+    width={800}
+    height={800}
+  />
+          </div>
         </div>
       </section>
 

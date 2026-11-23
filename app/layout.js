@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CompareBar from '@/components/CompareBar';
 import { getCategories, getSettings } from '@/services/products.server';
+import { AUTHOR } from '@/lib/constants';
 
 const vazir = localFont({
   src: [
@@ -24,6 +25,8 @@ export const metadata = {
   },
   description: 'خرید آنلاین موبایل و لوازم جانبی اصل با ضمانت اصالت و ارسال سریع',
   openGraph: { locale: 'fa_IR', type: 'website', siteName: 'دیجی مو' },
+  authors: [{ name: AUTHOR.nameEn, url: AUTHOR.linkedin }],
+  creator: AUTHOR.nameEn,
 };
 
 export const viewport = {

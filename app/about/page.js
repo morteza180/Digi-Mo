@@ -2,6 +2,7 @@ import Link from 'next/link';
 import ShopInfo from '@/components/ShopInfo';
 import { getProducts, getCategories } from '@/services/products.server';
 import { formatNumber } from '@/lib/format';
+import { AUTHOR } from '@/lib/constants';
 
 export const metadata = {
   title: 'درباره ما',
@@ -82,6 +83,40 @@ export default async function AboutPage() {
               </li>
             ))}
           </ol>
+        </section>
+
+        <section aria-labelledby="author-title" className="card flex flex-wrap items-center gap-4 p-5">
+          <div
+            className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-lajevard text-xl font-bold text-white"
+            aria-hidden="true"
+          >
+            م
+          </div>
+          <div className="min-w-0 flex-1">
+            <h2 id="author-title" className="font-bold text-lajevard">درباره‌ی سازنده</h2>
+            <p className="mt-1 text-sm leading-7 text-slate-600">
+              {AUTHOR.name} (<span dir="ltr">{AUTHOR.nameEn}</span>)، توسعه‌دهنده‌ی فرانت‌اند. دیجی مو نمونه‌کار من با
+              Next.js و Tailwind است.
+            </p>
+          </div>
+          <a
+            href={AUTHOR.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`پروفایل لینکدین ${AUTHOR.name} (در تب جدید)`}
+            className="btn-outline"
+          >
+            پروفایل لینکدین
+          </a>
+          <a
+            href={`https://t.me/${AUTHOR.telegram}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`تلگرام ${AUTHOR.name} (در تب جدید)`}
+            className="btn-outline"
+          >
+            تلگرام <span dir="ltr">@{AUTHOR.telegram}</span>
+          </a>
         </section>
 
         <section className="grid items-start gap-6 lg:grid-cols-2" aria-labelledby="reach-title">

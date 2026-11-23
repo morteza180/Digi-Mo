@@ -45,10 +45,10 @@
   {
     "id": "c-headphone",
     "slug": "headphone",
-    "name": "هدفون و ایرباد",
+    "name": "هدفون و ایرپاد",
     "icon": "🎧",
     "order": 4,
-    "description": "ایربادهای بی‌سیم با و بدون نویز کنسلینگ",
+    "description": "ایرپادهای بی‌سیم با و بدون نویز کنسلینگ",
     "specSchema": [
       { "key": "batteryHours", "label": "شارژدهی هدفون", "unit": "ساعت", "better": "higher" },
       { "key": "totalHours", "label": "شارژدهی با کیس", "unit": "ساعت", "better": "higher" },

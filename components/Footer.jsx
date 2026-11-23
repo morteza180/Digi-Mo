@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useCategories, useSettings } from '@/hooks/useCatalog';
-
+import { AUTHOR } from '@/lib/constants';
 export default function Footer() {
   const { shop } = useSettings();
   const categories = useCategories();
@@ -39,17 +39,40 @@ export default function Footer() {
         <div>
           <h3 className="mb-3 font-medium text-white">تماس</h3>
           <ul className="space-y-2 text-sm text-slate-300">
-            <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone preview-icon"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg> {shop.phone}</li>
-            <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail preview-icon"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg> {shop.email}</li>
-            <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin-house preview-icon"><path d="M15 22a1 1 0 0 1-1-1v-4a1 1 0 0 1 .445-.832l3-2a1 1 0 0 1 1.11 0l3 2A1 1 0 0 1 22 17v4a1 1 0 0 1-1 1z"/><path d="M18 10a8 8 0 0 0-16 0c0 4.993 5.539 10.193 7.399 11.799a1 1 0 0 0 .601.2"/><path d="M18 22v-3"/><circle cx="10" cy="10" r="3"/></svg> {shop.address}</li>
-            <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock preview-icon"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> {shop.workingHours}</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone preview-icon"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg> {shop.phone}</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail preview-icon"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" /></svg> {shop.email}</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin-house preview-icon"><path d="M15 22a1 1 0 0 1-1-1v-4a1 1 0 0 1 .445-.832l3-2a1 1 0 0 1 1.11 0l3 2A1 1 0 0 1 22 17v4a1 1 0 0 1-1 1z" /><path d="M18 10a8 8 0 0 0-16 0c0 4.993 5.539 10.193 7.399 11.799a1 1 0 0 0 .601.2" /><path d="M18 22v-3" /><circle cx="10" cy="10" r="3" /></svg> {shop.address}</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock preview-icon"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg> {shop.workingHours}</li>
             {shop.instagram && <li>📷 <span dir="ltr">@{shop.instagram}</span></li>}
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-white/10 py-4 text-center text-xs text-slate-400">
-        این فروشگاه یک پروژه نمایشی (نمونه‌کار) است؛ قیمت‌ها و کالاها واقعی نیستند.
+      <div className="border-t border-white/10 py-4 text-center text-xs text-slate-300">
+        <p>این فروشگاه یک پروژه نمایشی (نمونه‌کار) است؛ قیمت‌ها و کالاها واقعی نیستند.</p>
+        <p className="mt-1">
+          طراحی و توسعه: <span className="font-medium text-white">{AUTHOR.name}</span>
+          {' · '}
+          <a
+            href={AUTHOR.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`پروفایل لینکدین ${AUTHOR.name} (در تب جدید)`}
+            className="text-zaferan underline-offset-2 hover:underline"
+          >
+            لینکدین
+          </a>
+          {' · '}
+          <a
+            href={`https://t.me/${AUTHOR.telegram}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`تلگرام ${AUTHOR.name} (در تب جدید)`}
+            className="text-zaferan underline-offset-2 hover:underline"
+          >
+            تلگرام
+          </a>
+        </p>
       </div>
     </footer>
   );

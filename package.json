@@ -2,12 +2,12 @@
   "name": "digimo-next",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "node node_modules/next/dist/bin/next start -H 0.0.0.0",
+  "lint": "next lint"
+},
   "dependencies": {
     "next": "14.2.35",
     "react": "^18",

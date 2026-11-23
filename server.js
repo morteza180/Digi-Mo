@@ -1,3 +1,0 @@
-require('http')
-  .createServer((req, res) => res.end('ok'))
-  .listen(process.env.PORT || 3000, () => console.log('listening', process.env.PORT));
