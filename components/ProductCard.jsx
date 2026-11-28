@@ -3,9 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Price from '@/components/ui/Price';
-import { IconHeart, IconScale } from '@/components/ui/Icons';
+import { IconHeart, IconScale, IconTrash } from '@/components/ui/Icons';
 import { useCart } from '@/hooks/useCart';
 import { useWishlist, useCompare } from '@/hooks/useLists';
+import { MAX_QTY } from '@/lib/constants';
 import { formatNumber } from '@/lib/format';
 
 export default function ProductCard({ product }) {
@@ -16,6 +17,17 @@ export default function ProductCard({ product }) {
   const out = product.stock <= 0;
   const inWish = wish.has(product.id);
   const inCmp = cmp.has(product.id);
+
+  // سبد: همه‌ی خط‌های این محصول (ممکنه رنگ‌های مختلف باشن)
+  const defaultColor = product.colors?.[0]?.name ?? null;
+  const lines = cart.items.filter((i) => i.id === product.id);
+  const qty = lines.reduce((sum, i) => sum + i.qty, 0);
+  const maxQty = Math.min(MAX_QTY, Math.max(product.stock, 0));
+  const target = lines.find((i) => (i.color ?? null) === defaultColor) ?? lines[lines.length - 1];
+
+  const add = () => cart.add(product.id, 1, defaultColor);
+  // setQty با مقدار ۰ خط را از سبد حذف می‌کند
+  const decrease = () => target && cart.setQty(product.id, target.qty - 1, target.color);
 
   return (
     <article className="card group flex flex-col overflow-hidden transition hover:shadow-md">
@@ -83,19 +95,53 @@ export default function ProductCard({ product }) {
           <Price price={product.price} discount={product.discount} />
           {product.reviewCount > 0 && (
             <span className="whitespace-nowrap text-xs text-slate-500">
-                ⭐ {formatNumber(product.rating)}
+              ⭐ {formatNumber(product.rating)}
             </span>
-            )}
+          )}
         </div>
 
-        <button
-          type="button"
-          disabled={out}
-          onClick={() => cart.add(product.id, 1, product.colors?.[0]?.name ?? null)}
-          className={out ? 'btn-outline' : cart.has(product.id) ? 'btn-accent' : 'btn-primary'}
-        >
-          {out ? 'ناموجود' : cart.has(product.id) ? 'یکی دیگه اضافه کن' : 'افزودن به سبد'}
-        </button>
+        {out ? (
+          <button type="button" disabled className="btn-outline">ناموجود</button>
+        ) : qty === 0 ? (
+          <button type="button" onClick={add} className="btn-primary">افزودن به سبد</button>
+        ) : (
+          <div
+            role="group"
+            aria-label={`تعداد در سبد: ${formatNumber(qty)}`}
+            className="flex h-10 items-center justify-between rounded-xl border border-firouzeh bg-firouzeh/5 px-1"
+          >
+            <button
+              type="button"
+              onClick={decrease}
+              aria-label={qty === 1 ? 'حذف از سبد خرید' : 'کم کردن یک عدد'}
+              title={qty === 1 ? 'حذف از سبد خرید' : 'کم کردن یک عدد'}
+              className={`grid h-8 w-8 place-items-center rounded-lg text-slate-600 transition hover:bg-white ${
+                qty === 1 ? 'hover:text-anar' : ''
+              }`}
+            >
+              {qty === 1 ? (
+                <IconTrash width={18} height={18} />
+              ) : (
+                <span aria-hidden="true" className="text-xl leading-none">−</span>
+              )}
+            </button>
+
+            <span className="min-w-8 text-center text-sm font-bold text-lajevard" aria-live="polite">
+              {formatNumber(qty)}
+            </span>
+
+            <button
+              type="button"
+              onClick={add}
+              disabled={qty >= maxQty}
+              aria-label="یکی دیگه اضافه کن"
+              title={qty >= maxQty ? 'به سقف موجودی رسیده‌ای' : 'یکی دیگه اضافه کن'}
+              className="grid h-8 w-8 place-items-center rounded-lg text-xl leading-none text-lajevard transition hover:bg-white disabled:opacity-30"
+            >
+              +
+            </button>
+          </div>
+        )}
       </div>
     </article>
   );

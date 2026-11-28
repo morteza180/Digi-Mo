@@ -92,8 +92,7 @@ export default function AuthForm({ next = '/profile' }) {
   }
 
   const tab = (active) =>
-    `flex-1 rounded-lg py-2 text-sm font-medium transition ${
-      active ? 'bg-white text-lajevard shadow-sm' : 'text-slate-500 hover:text-slate-700'
+    `flex-1 rounded-lg py-2 text-sm font-medium transition ${active ? 'bg-white text-lajevard shadow-sm' : 'text-slate-500 hover:text-slate-700'
     }`;
 
   return (
@@ -124,10 +123,9 @@ export default function AuthForm({ next = '/profile' }) {
           </Field>
 
           <Field id="auth-password" label="رمز عبور" error={errors.password}>
-            <div className="relative">
+            <div className="relative" dir="ltr">
               <input
                 className="input pe-16"
-                dir="ltr"
                 type={showPass ? 'text' : 'password'}
                 autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
                 {...bind('password')}
@@ -137,6 +135,7 @@ export default function AuthForm({ next = '/profile' }) {
                 onClick={() => setShowPass((v) => !v)}
                 className="absolute end-3 top-1/2 -translate-y-1/2 text-xs text-slate-500 hover:text-lajevard"
                 aria-label={showPass ? 'پنهان کردن رمز' : 'نمایش رمز'}
+                aria-pressed={showPass}
               >
                 {showPass ? 'پنهان' : 'نمایش'}
               </button>

@@ -110,32 +110,30 @@ export default async function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-l from-firouzeh-dark via-lajevard to-lajevard-dark text-white">
-        <div className="container grid items-center gap-6 py-12 md:grid-cols-2 md:py-16">
-          <div>
-            <p className="mb-2 text-sm text-zaferan">جدیدترین پرچم‌دارهای ۲۰۲۶</p>
-            <h1 className="text-3xl font-bold leading-tight md:text-4xl">
-              موبایل و لوازم جانبی اصل،
-              <br />
-              با ضمانت و ارسال سریع
-            </h1>
-            <p className="mt-4 max-w-md text-slate-200">
-              از سامسونگ و اپل تا شیائومی؛ همه‌چیز را کنار هم مقایسه کن و مطمئن بخر.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/products" className="btn-accent">مشاهده محصولات</Link>
-              <Link href="/products?category=mobile" className="btn border border-white/40 text-white hover:bg-white/10">
-                گوشی موبایل
-              </Link>
-            </div>
+      <section className="bg-gradient-to-l from-firouzeh-dark via-lajevard to-lajevard-dark text-white lg:flex lg:min-h-[calc(100svh_-_var(--header-h,7rem))] lg:items-center">
+        <div className="container grid w-full items-center gap-6 py-12 md:grid-cols-2 md:py-16">      <div>
+          <p className="mb-2 text-sm text-zaferan">جدیدترین پرچم‌دارهای ۲۰۲۶</p>
+          <h1 className="text-3xl font-bold leading-tight md:text-4xl 2xl:text-5xl">            موبایل و لوازم جانبی اصل،
+            <br />
+            با ضمانت و ارسال سریع
+          </h1>
+          <p className="mt-4 max-w-md text-slate-200">
+            از سامسونگ و اپل تا شیائومی؛ همه‌چیز را کنار هم مقایسه کن و مطمئن بخر.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link href="/products" className="btn-accent">مشاهده محصولات</Link>
+            <Link href="/products?category=mobile" className="btn border border-white/40 text-white hover:bg-white/10">
+              گوشی موبایل
+            </Link>
           </div>
+        </div>
           <div className="relative hidden text-center text-[9rem] leading-none md:block" aria-hidden="true">
             <Image
-    src="/images/Futuristic_Smartphone_Tech_Showcase.png"
-    alt=""
-    width={800}
-    height={800}
-  />
+              src="/images/Futuristic_Smartphone_Tech_Showcase.png"
+              alt=""
+              width={800}
+              height={800}
+            />
           </div>
         </div>
       </section>
@@ -156,21 +154,23 @@ export default async function HomePage() {
       </section>
 
       {/* دسته‌بندی‌ها */}
-      <Section title="دسته‌بندی‌ها">
-        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          {categories.map((c) => (
-            <li key={c.id}>
-              <Link
-                href={`/products?category=${c.slug}`}
-                className="card flex flex-col items-center gap-2 p-5 text-center transition hover:-translate-y-0.5 hover:border-firouzeh hover:shadow-md"
-              >
-                <span className="text-4xl" aria-hidden="true">{c.icon}</span>
-                <span className="text-sm font-medium">{c.name}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </Section>
+      <div className="hidden md:block">
+        <Section title="دسته‌بندی‌ها">
+          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+            {categories.map((c) => (
+              <li key={c.id}>
+                <Link
+                  href={`/products?category=${c.slug}`}
+                  className="card flex flex-col items-center gap-2 p-5 text-center transition hover:-translate-y-0.5 hover:border-firouzeh hover:shadow-md"
+                >
+                  <span className="text-4xl" aria-hidden="true">{c.icon}</span>
+                  <span className="text-sm font-medium">{c.name}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      </div>
 
       <Section
         title={

@@ -26,3 +26,9 @@ export const IconClose = (p) => (
 export const IconScale = (p) => (
   <svg {...base} {...p}><path d="M12 3v18M5 7h14M5 7l-3 7a3.500 3.500 0 0 0 6 0L5 7Zm14 0-3 7a3.500 3.500 0 0 0 6 0l-3-7Z" /></svg>
 );
+
+export const IconTrash = (p) => (
+  <svg {...base} {...p}>
+    <path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3" />
+  </svg>
+);

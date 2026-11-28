@@ -2,15 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useStore } from '@/hooks/useStore';
 import { useCart } from '@/hooks/useCart';
 import { useWishlist } from '@/hooks/useLists';
+import { useCategories } from '@/hooks/useCatalog';
 import { formatNumber } from '@/lib/format';
 import { SITE_NAME } from '@/lib/constants';
 import { IconCart, IconHeart, IconUser, IconSearch, IconMenu, IconClose } from '@/components/ui/Icons';
-import { useCategories } from '@/hooks/useCatalog';
-
 
 function Badge({ n }) {
   if (!n) return null;
@@ -25,6 +24,7 @@ export default function Navbar() {
   const categories = useCategories();
   const router = useRouter();
   const pathname = usePathname();
+  const headerRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [session] = useStore('session', null);
@@ -32,6 +32,18 @@ export default function Navbar() {
   const wish = useWishlist();
 
   useEffect(() => setOpen(false), [pathname]); // بستن منو بعد از تغییر مسیر
+
+  // ارتفاع واقعی هدر را در --header-h می‌گذارد (برای هیرو)
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return undefined;
+    const update = () =>
+      document.documentElement.style.setProperty('--header-h', `${el.offsetHeight}px`);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   const submit = (e) => {
     e.preventDefault();
@@ -42,7 +54,10 @@ export default function Navbar() {
   const iconLink = 'relative grid h-10 w-10 place-items-center rounded-full text-slate-700 hover:bg-slate-100';
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur print:hidden">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur print:hidden"
+    >
       {/* ردیف اول */}
       <div className="container flex items-center gap-3 py-3">
         <button
@@ -102,9 +117,9 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* منوی موبایل */}
+      {/* منوی موبایل: absolute تا ارتفاع هدر عوض نشود */}
       {open && (
-        <div className="border-t border-slate-100 bg-white lg:hidden">
+        <div className="absolute inset-x-0 top-full max-h-[calc(100svh_-_var(--header-h,4rem))] overflow-y-auto border-b border-t border-slate-200 bg-white shadow-lg lg:hidden">
           <div className="container space-y-4 py-4">
             <form onSubmit={submit} role="search" className="relative md:hidden">
               <input
